@@ -1,0 +1,171 @@
+$color-white: #fff;
+$color-black: #000;
+$color-darkgray:#444;
+$color-red: #ff0000;
+$color-blue: #0000ff;
+$color-yellow: #ffff00;
+$color-ltred: #ff4949;
+$color-dkgray2: #222;
+$color-dkgray1: #333;
+$color-gray: #555;
+$color-ltgray1: #777;
+$color-ltgray2:#eee;
+$color-ltgray3:#e6e6e6;
+$color-dkblue: #0099cc;
+$color-twitter: #1da1f2;
+$color-facebook: #3b5998;
+$color-google-plus:	#dd4b39;
+$color-bbb: #006495;
+$color-orange: #cc6633;
+$color-brown: #771100;
+.clr-white{color:$color-white;}
+.clr-black{color:$color-black;}
+.clr-darkgray{color:$color-darkgray;}
+.clr-red{color:$color-red;}
+.bgclr-red{background-color:$color-red;}
+.clr-blue{color:$color-blue;}
+.clr-yellow{color:$color-yellow;}
+.clr-ltred{color:$color-ltred;}
+.clr-dkgray2{color:$color-dkgray2;}
+.clr-dkgray1{color:$color-dkgray1;}
+.clr-gray{color:$color-gray;}
+.clr-ltgray1{color:$color-ltgray1;}
+.clr-ltgray2{color:$color-ltgray2;}
+//.clr-primary{color:$color-primary;}
+.clr-twitter{color:$color-twitter;}
+.clr-facebook{color:$color-facebook;}
+.clr-google-plus{color:$color-google-plus;}
+.clr-bbb{color:$color-bbb;}
+.clr-primary{color: $color-orange;}
+.bgclr-primary{background-color: $color-orange;}
+.clr-secondary{color:$color-brown;}
+.bgclr-secondary{background-color:$color-brown;}
+
+// Body
+$body-bg: #f5f8fa;
+body {
+  background: url('http://playpositions.local/images/bg.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+}
+// Borders
+$laravel-border-color: darken($body-bg, 10%);
+$list-group-border: $laravel-border-color;
+$navbar-default-border: $laravel-border-color;
+$panel-default-border: $laravel-border-color;
+$panel-inner-border: $laravel-border-color;
+
+// Brands
+$brand-primary: #3097D1;
+$brand-info: #8eb4cb;
+$brand-success: #2ab27b;
+$brand-warning: #cbb956;
+$brand-danger: #bf5329;
+
+// Typography
+//$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+$font-family-sans-serif: "Raleway", sans-serif;
+//$font-size-base: 14px;
+$line-height-base: 1.6;
+$text-color: #636b6f;
+.rock{font-family: 'Rock Salt', cursive;}
+.ubuntu{font-family: 'Ubuntu', sans-serif;}
+.questrial{font-family: 'Questrial', sans-serif;}
+.quicksand{font-family: 'Quicksand', sans-serif;}
+.titillium{font-family: 'Titillium Web', sans-serif;}
+// Navbar
+$navbar-default-bg: #fff;
+.bg-bb-primary{
+  background-color: $color-orange;
+  //background: -moz-linear-gradient(top, $color-orange 0%, #ffa90a 99%);
+  //background: -webkit-linear-gradient(top, $color-orange 0%,#ffa90a 99%);
+  //background: linear-gradient(to bottom, $color-orange 0%,#ffa90a 99%);
+}
+.bg-bb-secondary{
+  background-color: $color-brown;
+  //background: -moz-linear-gradient(top, $color-orange 0%, #ffa90a 99%);
+  //background: -webkit-linear-gradient(top, $color-orange 0%,#ffa90a 99%);
+  //background: linear-gradient(to bottom, $color-orange 0%,#ffa90a 99%);
+}
+
+// Buttons
+$btn-default-color: $text-color;
+
+// Inputs
+$input-border: lighten($text-color, 40%);
+$input-border-focus: lighten($brand-primary, 25%);
+$input-color-placeholder: lighten($text-color, 30%);
+
+// Panels
+$panel-default-heading-bg: #fff;
+
+
+//things
+
+.padme-10{padding:10px;}
+.center img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.printonly{display:none;}
+@media print {
+  * {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  #controls, .footer, .footerarea{ display: none; }
+  html, body {
+    /*changing width to 100% causes huge overflow and wrap*/
+    height:100%;
+    overflow: hidden;
+    background: #FFF;
+    font-size: 12.5pt;
+  }
+  @page {size: landscape}
+  .container {
+    width:100%;
+  }
+  img {
+    width:30%;
+  }
+  li {
+    margin: 0 0 10px 20px !important;
+  }
+  table {
+    width:100% !important;
+    border-collapse: collapse;
+  }
+  .footer{display:block;}.printonly{display:block;}
+  table, th, td {
+    border: 1px solid black;
+    text-align:center;
+  }
+  .no-print, .no-print * {
+    display: none !important;
+  }
+  .table-r{
+    width:95%;
+  }
+
+}
+
+div.oddwarning {
+  display: none;
+}
+
+#progressbar {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.modal-backdrop
+{
+  background-color:#ffffff;
+  opacity:0.8 !important;
+}
