@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
+use App\Roster;
 
 class RosterController extends Controller
 {
@@ -23,11 +25,6 @@ class RosterController extends Controller
      */
     public function create(Request $request)
     {
-//        $rules = [
-//            'innings' => 'required',
-//            'players' => 'required',
-//        ];
-       // dd($request->all());
         $data = $request->all();
         if (isset($data['innings'])) {
             $innings = $data['innings'];
@@ -46,9 +43,9 @@ class RosterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+
     }
 
     /**
@@ -59,14 +56,25 @@ class RosterController extends Controller
      */
     public function show()
     {
-        //$innings, $players
-        $innings = 7;
-        $players = 9;
-        $data = array(
-            'innings' => $innings,
-            'players' => $players
-        );
-        return view('roster-create', compact('innings', 'players'));
+//        //$innings, $players
+//        $innings = 7;
+//        $players = 9;
+//        $data = array(
+//            'innings' => $innings,
+//            'players' => $players
+//        );
+//        return view('roster-create', compact('innings', 'players'));
+        $roster = new Roster;
+        $roster->user_id = 2;
+        $roster->title = 'Another title';
+        $roster->handle = base64_encode(urlencode(mt_rand(1000,10000000)));
+        $roster->names = 'steve, lara, tom, abe, bill';
+        $roster->teamname = 'muck dogs';
+        $roster->league = 'AA';
+        $roster->type = 'Baseball';
+        $roster->innings = 9;
+        $roster->players = 9;
+        $roster->save();
     }
 
     /**
