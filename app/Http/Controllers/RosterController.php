@@ -119,9 +119,22 @@ class RosterController extends Controller
     {
         $data = $request->all();
         $ros_pos_list = $this->getPositionAndRosterList($data['players'],$data);
-        $is_it_fair = $this->fairRotation($ros_pos_list[0], $ros_pos_list[1], $data['players']);
+        $result=false;
+        while(!$result){
+            $result = $this->fairRotation($ros_pos_list[0], $ros_pos_list[1], $data['innings']);
+        }
+//        $is_it_fair = $this->fairRotation($ros_pos_list[0], $ros_pos_list[1], $data['innings']);
+////        $pn = $ros_pos_list[0];
+//        $c = 0;
+
+        foreach($result as $r){
+//            var_dump($i);
+            echo implode(', ',$r).'<br>';
+//            echo $pn[$c] . ' ' . $i[0] . ' ' . $i[1] . ' ' . $i[1] . '<br>';
+            
+        }
+        dd($result);
 //        $return = array()
-        dd($is_it_fair[7]);
     }
 
 
@@ -388,7 +401,7 @@ class RosterController extends Controller
         $fair="?";
         $must_drop_count=0;
         $must_gain_count=0;
-        while($fair!="true" && $iterations<2000){
+        while($fair!="true" && $iterations<15000){
             $must_gain=$must_drop=$may_gain=$may_drop=[];  // reset
             for($c=0; $c<$roster_name_count; ++$c){  // triage each column
                 $col=array_column($result,$c);

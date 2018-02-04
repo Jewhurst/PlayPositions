@@ -10,11 +10,11 @@
             <div class="modal-body">
                 <div class="col-md-12">
                     {{ Form::open(array('method' => 'post', 'route' => 'roster.create')) }}
-
+                    {{Form::label('players', 'Players')}}
                     <div class="form-group">
                         {{ Form::select('players', array('6'=>6,'7'=>7,'8'=>8,'9'=>9,'10'=>10,'11'=>11,'12'=>12,'13'=>13,'14'=>14,'15'=>15,'16'=>16,'17'=>17,'18'=>18)) }}
                     </div>
-
+                    {{Form::label('innings', 'Innings')}}
                     <div class="form-group">
                         {{ Form::select('innings', array('6'=>6,'7'=>7,'8'=>8,'9'=>9)) }}
                     </div>
