@@ -120,7 +120,8 @@ class RosterController extends Controller
         $data = $request->all();
         $ros_pos_list = $this->getPositionAndRosterList($data['players'],$data);
         $is_it_fair = $this->fairRotation($ros_pos_list[0], $ros_pos_list[1], $data['players']);
-        dd($is_it_fair);
+//        $return = array()
+        dd($is_it_fair[7]);
     }
 
 

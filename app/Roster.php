@@ -20,7 +20,10 @@ class Roster extends Model
         'created_by',
         'table_html'
     ];
-//    protected $dates = ['deleted_at'];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user(){
         return $this->belongsTo('App\User');
     }
