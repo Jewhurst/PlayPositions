@@ -1,27 +1,31 @@
 @extends('layouts.app')
 @section('content')
-    <div class="col-12">
-        <div class="">
-            <form action="roster.php" method="POST" class="form">
-                <br>
-                <h2 class="tcenter">  ENTER PLAYER NAMES</h2><br>
+    <div class="row padme-10">
+        <div class="col-md-3"></div>
+        <div class="col-sm-6">
+            <h2 class="text-center"><i class="fa fa-plus-square"></i> ENTER PLAYER NAMES</h2><br>
 
-                <?php ;?>
+            {{ Form::open(array('method' => 'post', 'route' => 'roster.build')) }}
 
-                <div class="modal-footer">
-                    <div class="col-md-12">
-                        <button type="submit" id="submit_players" name="submit_players" class="btn btn-warning">Save changes</button>
-                    </div>
+            @for($z=1;$z<=$players;$z++)
+                @php
+                    $t = 'p'.$z;
+                @endphp
+                <div class="form-group">
+                    {{ Form::text($t,(isset($_SESSION[$t]) ? $_SESSION[$t] : ""), array('class' => 'form-control', 'placeholder' => 'Player '.$z)) }}
                 </div>
-            </form>
+            @endfor
+
+            <div class="form-group">
+                {{ Form::submit('Save', array('class'=>'btn bg-bb-primary clr-white')) }}
+            </div>
+            {{ Form::close() }}
+
+
+
         </div>
+        <div class="col-md-3"></div>
     </div>
 
 
-    Hello
-    {{--{{ $data->innings }}--}}
-
-    {{--{{ Form::open(array('action' => 'RosterController@create')) }}--}}
-    {{--//--}}
-    {{--{{ Form::close() }}--}}
 @endsection

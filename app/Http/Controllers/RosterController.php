@@ -21,9 +21,23 @@ class RosterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+//        $rules = [
+//            'innings' => 'required',
+//            'players' => 'required',
+//        ];
+       // dd($request->all());
+        $data = $request->all();
+        if (isset($data['innings'])) {
+            $innings = $data['innings'];
+        }
+
+        if (isset($data['players'])) {
+            $players = $data['players'];
+        }
+        return view('roster-create', compact('innings', 'players'));
+
     }
 
     /**
@@ -46,13 +60,13 @@ class RosterController extends Controller
     public function show()
     {
         //$innings, $players
-        $innings = 9;
+        $innings = 7;
         $players = 9;
         $data = array(
             'innings' => $innings,
             'players' => $players
         );
-        return view('roster-create')->with($data);
+        return view('roster-create', compact('innings', 'players'));
     }
 
     /**

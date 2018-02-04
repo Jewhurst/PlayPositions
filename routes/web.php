@@ -20,3 +20,6 @@ Auth::routes();
 Route::resource('roster','RosterController');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::any('/roster', 'RosterController@show');
+Route::post('/roster/create', ['as' => 'roster-create', 'uses' => 'RosterController@create']);
+Route::post('/roster/build', ['as' => 'roster-build', 'uses' => 'RosterController@store']);
+Route::post('/roster/lineup', ['as' => 'roster-lineup', 'uses' => 'RosterController@show']);

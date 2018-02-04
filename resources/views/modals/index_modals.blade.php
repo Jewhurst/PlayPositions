@@ -9,30 +9,20 @@
             </div>
             <div class="modal-body">
                 <div class="col-md-12">
-                    <center>
-                        <div>
-                            <form action="roster" method="POST" class="form">
-                                <div class="row">
-                                    <div class="col">
-                                        <label class="mr-sm-2 boldme" for="playercount">Players</label>
-                                        <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="playercount" name="playercount">
-                                            <option disabled selected>Choose...</option>
-                                            <?php for ($y = 6; $y <= 18; $y++) {echo '<option value="'.$y.'">'.$y.'</option>';}?>
-                                        </select>
-                                    </div>
-                                    <div class="col">
-                                        <label class="mr-sm-2 boldme" for="inningcount">Innings</label>
-                                        <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inningcount" name="inningcount" disabled>
-                                            <option disabled selected>Choose...</option>
-                                            <?php for ($x = 6; $x <= 9; $x++) {echo '<option value="'.$x.'">'.$x.'</option>';}?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <br class="clear"><br>
-                                <button type="submit" id="submit_main" name="submit_main" class="btn bg-bb-primary clr-white mousehand">Build Roster</button>
-                            </form>
-                        </div>
-                    </center>
+                    {{ Form::open(array('method' => 'post', 'route' => 'roster.create')) }}
+
+                    <div class="form-group">
+                        {{ Form::select('players', array('6'=>6,'7'=>7,'8'=>8,'9'=>9,'10'=>10,'11'=>11,'12'=>12,'13'=>13,'14'=>14,'15'=>15,'16'=>16,'17'=>17,'18'=>18)) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::select('innings', array('6'=>6,'7'=>7,'8'=>8,'9'=>9)) }}
+                    </div>
+                    <div class="form-group">
+                        {{ Form::submit('Build Roster', array('class'=>'btn bg-bb-primary clr-white')) }}
+                    </div>
+                    {{ Form::close() }}
+
                 </div>
             </div>
         </div>
