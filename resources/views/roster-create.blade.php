@@ -5,7 +5,7 @@
         <div class="col-sm-6">
             <h2 class="text-center"><i class="fa fa-plus-square"></i> ENTER PLAYER NAMES</h2><br>
 
-            {{ Form::open(array('method' => 'post', 'route' => 'roster.create')) }}
+            {{ Form::open(array('method' => 'post', 'action' => 'RosterController@build')) }}
 
             @for($z=1;$z<=$players;$z++)
                 @php
