@@ -179,6 +179,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        Sujip\Guid\GuidServiceProvider::class,
+
     ],
 
     /*
@@ -232,6 +234,7 @@ return [
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
         'Form'         => Collective\Html\FormFacade::class,
         'Html'         => Collective\Html\HtmlFacade::class,
+        'Guid' => Sujip\Guid\Guid::class,
 
     ],
 

@@ -40,7 +40,7 @@ $color-brown: #771100;
 .bgclr-primary{background-color: $color-orange;}
 .clr-secondary{color:$color-brown;}
 .bgclr-secondary{background-color:$color-brown;}
-
+.fwidth{width:100%;}
 // Body
 $body-bg: #f5f8fa;
 body {
@@ -106,6 +106,7 @@ $panel-default-heading-bg: #fff;
 //things
 
 .padme-10{padding:10px;}
+.padme-lr-10{padding: 0px 10px;}
 .center img {
   display: block;
   margin-left: auto;

@@ -12330,6 +12330,10 @@ a.text-dark:hover {
   background-color: #771100;
 }
 
+.fwidth {
+  width: 100%;
+}
+
 body {
   background: url("http://playpositions.local/images/bg.jpg") no-repeat center center fixed;
   background-size: cover;
@@ -12365,6 +12369,10 @@ body {
 
 .padme-10 {
   padding: 10px;
+}
+
+.padme-lr-10 {
+  padding: 0px 10px;
 }
 
 .center img {
@@ -12464,5 +12472,9 @@ div.oddwarning {
   padding-left: 0px;
   padding-right: 0px;
   background-color: rgba(255, 255, 255, 0.8543);
+}
+
+select {
+  min-width: 50px;
 }
 

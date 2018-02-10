@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Auth;
+//use App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\Roster;
+use Auth;
+use Sujip\Guid\Guid;
 
 
 class RosterController extends Controller
@@ -26,26 +28,30 @@ class RosterController extends Controller
      */
     public function create(Request $request)
     {
+
+        $user = Auth::user();
         $data = $request->all();
-        if (isset($data['innings'])) {
-            $innings = $data['innings'];
-        }
-        if (isset($data['players'])) {
-            $players = $data['players'];
-        }
-        if (isset($data['team_name'])) {
-            $team_name = $data['team_name'];
-        }
+        $user_id = isset($user->id) ? $user->id : 0;
+        $generator = new \Nubs\RandomNameGenerator\Vgng();
+        $title = isset($data['title']) ? $data['title'] : $generator->getName();
+        $slug = (isset($title) && $title != '') ? str_slug($title) : str_slug($generator->getName());
+        $handle = guid();
+        $team_name = isset($data['team_name']) ? $data['team_name'] : null;
+        $league = isset($data['league']) ? $data['league'] : null;
+        $type = isset($data['type']) ? $data['type'] : null;
+        $innings = isset($data['innings']) ? $data['innings'] : 9;
+        $players = isset($data['players']) ? $data['players'] : 9;
 
         $roster = new Roster;
-        $roster->user_id = Auth::user()->id ? Auth::user()->id : 0;
-        $roster->title = isset($data['title']) ? $data['title'] : null;
-        $roster->handle = random_str(mt_rand(8,25));
-        $roster->teamname = isset($data['team_name']) ? $data['team_name'] : null;
-        $roster->league = isset($data['league']) ? $data['league'] : null;
-        $roster->type = isset($data['type']) ? $data['type'] : null;
-        $roster->innings = isset($data['innings']) ? $data['innings'] : 9;
-        $roster->players = isset($data['players']) ? $data['players'] : 9;
+        $roster->user_id = $user_id;
+        $roster->title = $title;
+        $roster->slug = $slug;
+        $roster->handle = $handle;
+        $roster->team_name = $team_name;
+        $roster->league = $league;
+        $roster->type = $type;
+        $roster->innings = $innings;
+        $roster->players = $players;
         $roster->save();
 
         return view('roster-create', compact('innings', 'players', 'team_name'));
