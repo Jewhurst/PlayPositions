@@ -30,12 +30,12 @@ class RosterController extends Controller
     {
 
         $user = Auth::user();
+        $generator = new \Nubs\RandomNameGenerator\Alliteration();
         $data = $request->all();
         $user_id = isset($user->id) ? $user->id : 0;
-        $generator = new \Nubs\RandomNameGenerator\Vgng();
         $title = isset($data['title']) ? $data['title'] : $generator->getName();
         $slug = (isset($title) && $title != '') ? str_slug($title) : str_slug($generator->getName());
-        $handle = guid();
+        $roster_id = guid();
         $team_name = isset($data['team_name']) ? $data['team_name'] : null;
         $league = isset($data['league']) ? $data['league'] : null;
         $type = isset($data['type']) ? $data['type'] : null;
@@ -46,7 +46,7 @@ class RosterController extends Controller
         $roster->user_id = $user_id;
         $roster->title = $title;
         $roster->slug = $slug;
-        $roster->handle = $handle;
+        $roster->roster_id = $roster_id;
         $roster->team_name = $team_name;
         $roster->league = $league;
         $roster->type = $type;

@@ -62,7 +62,7 @@
                                 <div class="input-group-prepend" style="padding:0px 10px;">
                                     <span class="input-group-text">{{Form::label('title', 'Roster Title')}} </span>
                                 </div>
-                                    {{Form::text('team_name','',array('class'=>'form-control'))}}
+                                    {{Form::text('title','',array('class'=>'form-control'))}}
                             </div>
                             <div class="mt-3 mb-3"></div>
                             <div class="input-group">
