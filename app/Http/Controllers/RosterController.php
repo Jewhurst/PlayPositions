@@ -131,10 +131,9 @@ class RosterController extends Controller
 //            var_dump($i);
             echo implode(', ',$r).'<br>';
 //            echo $pn[$c] . ' ' . $i[0] . ' ' . $i[1] . ' ' . $i[1] . '<br>';
-            
+
         }
         dd($result);
-//        $return = array()
     }
 
 
