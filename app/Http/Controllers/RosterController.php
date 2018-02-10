@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\Roster;
 
+
 class RosterController extends Controller
 {
     /**
@@ -123,17 +124,21 @@ class RosterController extends Controller
         while(!$result){
             $result = $this->fairRotation($ros_pos_list[0], $ros_pos_list[1], $data['innings']);
         }
+        $players = $ros_pos_list[0];
+        $positions = $ros_pos_list[1];
+        $innings = $data['innings'];
+        return view('roster-build', compact('result','players', 'positions', 'innings'));
 //        $is_it_fair = $this->fairRotation($ros_pos_list[0], $ros_pos_list[1], $data['innings']);
 ////        $pn = $ros_pos_list[0];
 //        $c = 0;
 
-        foreach($result as $r){
-//            var_dump($i);
-            echo implode(', ',$r).'<br>';
-//            echo $pn[$c] . ' ' . $i[0] . ' ' . $i[1] . ' ' . $i[1] . '<br>';
-
-        }
-        dd($result);
+//        foreach($result as $r){
+////            var_dump($i);
+//            echo implode(', ',$r).'<br>';
+////            echo $pn[$c] . ' ' . $i[0] . ' ' . $i[1] . ' ' . $i[1] . '<br>';
+//
+//        }
+//        dd($result);
     }
 
 
@@ -368,7 +373,7 @@ class RosterController extends Controller
      * @param string $off
      * @return bool
      */
-    public function fairRotation($roster_names=[], $positions=[], $rotations=9, $off="<strong>X</strong>"){
+    public function fairRotation($roster_names=[], $positions=[], $rotations=9, $off="X"){
         $roster_name_count=sizeof($roster_names);
         $positions_count=sizeof($positions);
         //echo "<div>roster_count=$roster_count, positions_count=$positions_count</div>";
