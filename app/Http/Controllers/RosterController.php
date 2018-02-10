@@ -30,11 +30,25 @@ class RosterController extends Controller
         if (isset($data['innings'])) {
             $innings = $data['innings'];
         }
-
         if (isset($data['players'])) {
             $players = $data['players'];
         }
-        return view('roster-create', compact('innings', 'players'));
+        if (isset($data['team_name'])) {
+            $team_name = $data['team_name'];
+        }
+
+        $roster = new Roster;
+        $roster->user_id = Auth::user()->id ? Auth::user()->id : 0;
+        $roster->title = isset($data['title']) ? $data['title'] : null;
+        $roster->handle = random_str(mt_rand(8,25));
+        $roster->teamname = isset($data['team_name']) ? $data['team_name'] : null;
+        $roster->league = isset($data['league']) ? $data['league'] : null;
+        $roster->type = isset($data['type']) ? $data['type'] : null;
+        $roster->innings = isset($data['innings']) ? $data['innings'] : 9;
+        $roster->players = isset($data['players']) ? $data['players'] : 9;
+        $roster->save();
+
+        return view('roster-create', compact('innings', 'players', 'team_name'));
 
     }
 
@@ -127,18 +141,15 @@ class RosterController extends Controller
         $players = $ros_pos_list[0];
         $positions = $ros_pos_list[1];
         $innings = $data['innings'];
-        return view('roster-build', compact('result','players', 'positions', 'innings'));
-//        $is_it_fair = $this->fairRotation($ros_pos_list[0], $ros_pos_list[1], $data['innings']);
-////        $pn = $ros_pos_list[0];
-//        $c = 0;
+        //lets store each player and their positions per roster built
+        //first store the roster with basic info,
+        // 1. user that made it
+        // 2. how many players/innings
+        // 3. a handle to reference it
+        // 4. maybe store which positions and player names on initial
 
-//        foreach($result as $r){
-////            var_dump($i);
-//            echo implode(', ',$r).'<br>';
-////            echo $pn[$c] . ' ' . $i[0] . ' ' . $i[1] . ' ' . $i[1] . '<br>';
-//
-//        }
-//        dd($result);
+        return view('roster-build', compact('result','players', 'positions', 'innings'));
+
     }
 
 
