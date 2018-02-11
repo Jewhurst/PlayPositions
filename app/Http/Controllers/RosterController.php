@@ -54,7 +54,7 @@ class RosterController extends Controller
         $roster->players = $players;
         $roster->save();
 
-        return view('roster-create', compact('innings', 'players', 'team_name'));
+        return view('roster-create', compact('innings', 'players', 'team_name', 'title','league'));
 
     }
 
@@ -77,9 +77,9 @@ class RosterController extends Controller
      */
     public function show()
     {
-        $created_by = auth()->user()->id;
+        $user_id = auth()->user()->id;
 
-        $user = User::find($created_by);
+        $user = User::find($user_id);
 
         return view('roster-show')->with('roster', $user->roster);
     }
