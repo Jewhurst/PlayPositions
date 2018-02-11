@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class PositionLineup extends Model
 {
-    protected $table ='position_lineups';
+    protected $table ='position_lineup';
     protected $fillable = [
         'id',
         'roster_id',

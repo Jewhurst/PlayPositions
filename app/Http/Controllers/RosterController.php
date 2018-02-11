@@ -8,6 +8,7 @@ use App\Roster;
 use Auth;
 use Sujip\Guid\Guid;
 use App\User;
+use App\PositionLineup;
 
 class RosterController extends Controller
 {
@@ -54,7 +55,7 @@ class RosterController extends Controller
         $roster->players = $players;
         $roster->save();
 
-        return view('roster-create', compact('innings', 'players', 'team_name', 'title','league'));
+        return view('roster-create', compact('innings', 'players', 'team_name', 'title','league', 'roster_id','game_date'));
 
     }
 
@@ -139,9 +140,29 @@ class RosterController extends Controller
         // 2. how many players/innings
         // 3. a handle to reference it
         // 4. maybe store which positions and player names on initial
-        $counter = 0;
-        for($i=0;$i<=$innings;$i++){
-
+        $count = count($players);
+        $d = 0;
+        for($b=1;$b<=$count;$b++){
+            $collect = [];
+            $position_lineup = new PositionLineup;
+            $collect[] = array('playername' => $players[$d]);
+            $r = 0;
+            for($c=1;$c<=$innings;$c++){
+                $collect[] = array(
+                    'positions'.$r.'_'.$d => $result[$r][$d]
+                );
+                $r++;
+            }
+            $player_positions = $collect;
+            $serialized_collect = serialize($player_positions);
+            $position_lineup->league = $data['league'];
+            $position_lineup->roster_id = $data['roster_id'];
+            $position_lineup->team_name = $data['team_name'];
+            $position_lineup->game_date = $data['game_date'];
+            $position_lineup->player_position = $serialized_collect;
+            //dd($position_lineup->player_position);
+            $position_lineup->save();
+            $d++;
         }
 
         return view('roster-build', compact('result','players', 'positions', 'innings'));

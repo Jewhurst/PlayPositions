@@ -29,8 +29,12 @@
                     {{ Form::text($t,(isset($_SESSION[$t]) ? $_SESSION[$t] : ""), array('class' => 'form-control', 'placeholder' => 'Player '.$z)) }}
                 </div>
             @endfor
+            {{ Form::hidden('roster_id',$roster_id) }}
             {{ Form::hidden('innings',$innings) }}
             {{ Form::hidden('players',$players) }}
+            {{ Form::hidden('team_name',$team_name) }}
+            {{ Form::hidden('game_date',$game_date) }}
+            {{ Form::hidden('league',$league) }}
             <div class="form-group">
                 {{ Form::submit('Save', array('class'=>'btn bg-bb-primary clr-white')) }}
             </div>
