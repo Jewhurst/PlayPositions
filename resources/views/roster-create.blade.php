@@ -1,15 +1,15 @@
 @extends('layouts.app')
 @section('content')
-    <div class="row padme-10 mt-4 mb-4 text-center">
-        <div class="col-sm-12">
-            <p class="lead">
-                <i class="fas fa-baseball-ball"></i> <small>Innings: {{$innings}}</small>
-                <i class="fas fa-child"></i> <small>Players: {{$players}}</small>
-                <i class="fas fa-clipboard"></i> <small>League: {{$league}}</small>
+    <div class="row padme-10">
+        <div class="col-sm-12 mt-4 mb-4 text-center">
+            <h3 class="lead">
+                <i class="fas fa-baseball-ball clr-primary"></i> <small style="padding-right:20px;">Innings: {{$innings}}</small>
+                <i class="fas fa-child clr-primary"></i> <small style="padding-right:20px;">Players: {{$players}}</small>
+                <i class="fas fa-clipboard clr-primary"></i> <small style="padding-right:20px;">League: {{$league}}</small>
                 @if(isset($team_name))
-                    <i class="fas fa-bullhorn"></i> <small>Team Name: <b>{{$team_name}}</b></small><br class="clear">
+                    <i class="fas fa-bullhorn clr-primary"></i> <small style="padding-right:20px;">Team Name: {{$team_name}}</small><br class="clear">
                 @endif
-            </p>
+            </h3>
         </div>
 
     </div>

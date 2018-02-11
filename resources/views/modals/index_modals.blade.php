@@ -1,5 +1,5 @@
 <div class="modal fade" id="playerList" tabindex="-1" role="dialog" aria-labelledby="playerListTitle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="playerListTitle">Select how many players and innings</h5>
@@ -12,10 +12,10 @@
                     {{ Form::open(array('method' => 'post', 'route' => 'roster.create')) }}
                     <div class="row">
 
-                        <div class="col-sm-4 text-center">
+                        <div class="col-sm-5 text-center">
                             <div class="input-group">
                                 <div class="input-group-prepend" style="padding:0px 10px;">
-                                    <span class="input-group-text">{{Form::label('players', 'Players')}} </span>
+                                    <i class="fas fa-child clr-primary"></i>&nbsp;&nbsp;<span class="input-group-text">{{Form::label('players', 'Players')}} </span>
                                 </div>
                                 <div class="form-group">
                                     {{ Form::select(
@@ -40,7 +40,7 @@
                             </div>
                             <div class="input-group">
                                 <div class="input-group-prepend" style="padding:0px 10px;">
-                                    <span class="input-group-text">{{Form::label('innings', 'Innings')}} </span>
+                                    <i class="fas fa-baseball-ball clr-primary"></i>&nbsp;&nbsp;<span class="input-group-text">{{Form::label('innings', 'Innings')}} </span>
                                 </div>
                                 <div class="form-group">
                                     {{ Form::select('innings', array('6'=>6,'7'=>7,'8'=>8,'9'=>9)) }}
@@ -48,7 +48,7 @@
                             </div>
                             <div class="input-group">
                                 <div class="input-group-prepend" style="padding:0px 10px;">
-                                    <span class="input-group-text">{{Form::label('league', 'League')}} </span>
+                                    <i class="fas fa-clipboard clr-primary"></i>&nbsp;&nbsp;<span class="input-group-text">{{Form::label('league', 'League')}} </span>
                                 </div>
                                 <div class="form-group">
                                     {{ Form::select('league', array('A'=>'A','AA'=>'AA','AAA'=>'AAA')) }}
@@ -56,11 +56,11 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-8 text-center">
+                        <div class="col-sm-7 text-center">
                             <div class="mt-3 mb-3"></div>
                             <div class="input-group">
                                 <div class="input-group-prepend" style="padding:0px 10px;">
-                                    <span class="input-group-text">{{Form::label('team_name', 'Team Name')}} </span>
+                                    <i class="fas fa-bullhorn clr-primary"></i>&nbsp;&nbsp;<span class="input-group-text">{{Form::label('team_name', 'Team Name')}} </span>
                                 </div>
                                     {{Form::text('team_name','',array('class'=>'form-control'))}}
                             </div>

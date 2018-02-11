@@ -35,8 +35,8 @@ class RosterController extends Controller
         $user_id = isset($user->id) ? $user->id : 0;
         $game_date = isset($data['game_date']) ? $data['game_date'] : '2018-01-01 12:00:00';
         $roster_id = guid();
-        $team_name = isset($data['team_name']) ? $data['team_name'] : null;
-        $team_slug = (isset($team_name) && $team_name != '') ? str_slug($team_name) : str_slug($generator->getName());
+        $team_name = isset($data['team_name']) ? $data['team_name'] : $generator->getName();
+        $team_slug = str_slug($team_name);
         $league = isset($data['league']) ? $data['league'] : null;
         $type = isset($data['type']) ? $data['type'] : null;
         $innings = isset($data['innings']) ? $data['innings'] : 9;
@@ -139,6 +139,10 @@ class RosterController extends Controller
         // 2. how many players/innings
         // 3. a handle to reference it
         // 4. maybe store which positions and player names on initial
+        $counter = 0;
+        for($i=0;$i<=$innings;$i++){
+
+        }
 
         return view('roster-build', compact('result','players', 'positions', 'innings'));
 
