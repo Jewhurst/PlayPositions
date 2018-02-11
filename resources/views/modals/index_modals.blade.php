@@ -57,13 +57,6 @@
                         </div>
 
                         <div class="col-sm-8 text-center">
-
-                            <div class="input-group">
-                                <div class="input-group-prepend" style="padding:0px 10px;">
-                                    <span class="input-group-text">{{Form::label('title', 'Roster Title')}} </span>
-                                </div>
-                                    {{Form::text('title','',array('class'=>'form-control'))}}
-                            </div>
                             <div class="mt-3 mb-3"></div>
                             <div class="input-group">
                                 <div class="input-group-prepend" style="padding:0px 10px;">
@@ -71,6 +64,18 @@
                                 </div>
                                     {{Form::text('team_name','',array('class'=>'form-control'))}}
                             </div>
+
+
+                            {{--<div class="input-group">--}}
+                                {{--<div class="input-group-prepend" style="padding:0px 10px;">--}}
+                                    {{--<span class="input-group-text">{{Form::label('game_date', 'Game Date')}} </span>--}}
+                                {{--</div>--}}
+                                {{----}}
+                                {{----}}
+                                {{----}}
+                                {{----}}
+                            {{--</div>--}}
+
 
                         </div>
                     </div>

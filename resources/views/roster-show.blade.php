@@ -45,7 +45,7 @@
                                             {{$r->team_name}}
                                         </td>
                                         <td>
-                                            {{$r->title}}
+                                            {{$r->game_date}}
                                         </td>
                                         <td>
                                             {{ Carbon\Carbon::parse($r->created_at)->toFormattedDateString()  }}

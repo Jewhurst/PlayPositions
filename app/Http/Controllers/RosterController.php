@@ -33,10 +33,10 @@ class RosterController extends Controller
         $generator = new \Nubs\RandomNameGenerator\Alliteration();
         $data = $request->all();
         $user_id = isset($user->id) ? $user->id : 0;
-        $title = isset($data['title']) ? $data['title'] : $generator->getName();
-        $slug = (isset($title) && $title != '') ? str_slug($title) : str_slug($generator->getName());
+        $game_date = isset($data['game_date']) ? $data['game_date'] : '2018-01-01 12:00:00';
         $roster_id = guid();
         $team_name = isset($data['team_name']) ? $data['team_name'] : null;
+        $team_slug = (isset($team_name) && $team_name != '') ? str_slug($team_name) : str_slug($generator->getName());
         $league = isset($data['league']) ? $data['league'] : null;
         $type = isset($data['type']) ? $data['type'] : null;
         $innings = isset($data['innings']) ? $data['innings'] : 9;
@@ -44,10 +44,10 @@ class RosterController extends Controller
 
         $roster = new Roster;
         $roster->user_id = $user_id;
-        $roster->title = $title;
-        $roster->slug = $slug;
+        $roster->game_date = $game_date;
         $roster->roster_id = $roster_id;
         $roster->team_name = $team_name;
+        $roster->team_slug = $team_slug;
         $roster->league = $league;
         $roster->type = $type;
         $roster->innings = $innings;

@@ -1,10 +1,15 @@
 @extends('layouts.app')
 @section('content')
-    <div class="row padme-10 mt-4 mb-4">
+    <div class="row padme-10 mt-4 mb-4 text-center">
         <div class="col-sm-12">
-            <h1 class="h1">
-                One more step to go
-            </h1>
+            <p class="lead">
+                <i class="fas fa-baseball-ball"></i> <small>Innings: {{$innings}}</small>
+                <i class="fas fa-child"></i> <small>Players: {{$players}}</small>
+                <i class="fas fa-clipboard"></i> <small>League: {{$league}}</small>
+                @if(isset($team_name))
+                    <i class="fas fa-bullhorn"></i> <small>Team Name: <b>{{$team_name}}</b></small><br class="clear">
+                @endif
+            </p>
         </div>
 
     </div>
@@ -12,7 +17,7 @@
         <div class="col-md-1"></div>
         <div class="col-sm-6" >
 
-            <h2 class="text-center"><i class="fa fa-plus-square"></i> ENTER PLAYER NAMES</h2><br>
+            <h2 class="text-center"><i class="fas fa-user-plus"></i> ENTER PLAYER NAMES</h2><br>
 
             {{ Form::open(array('method' => 'post', 'action' => 'RosterController@build')) }}
 
@@ -35,17 +40,17 @@
 
         </div>
         <div class="col-md-5">
+            {{--<div class="mt-5 mb-3"></div>--}}
             <div class="row">
-                <div class="col-sm-12 mt-5">
-                    <h2 class="ml-2 ubuntu">
-                        Team Name: <b>{{$team_name}}</b><br>
-                        Players: {{$players}}<br>
-                        Innings: {{$innings}}<br>
-                        Roster Title: {{$title}}<br>
-                        League: {{$league}}
-                    </h2>
+                <div class="col-sm-12">
+                    @php
+                        $tip_number = mt_rand(1,2);
+                    @endphp
+                    @include('coach-tips.tip-'.$tip_number)
                 </div>
+
             </div>
+
         </div>
 
     </div>

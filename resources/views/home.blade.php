@@ -44,7 +44,7 @@
                                         {{$r->team_name}}
                                     </td>
                                     <td>
-                                        {{$r->title}}
+                                        {{$r->game_date}}
                                     </td>
                                     <td>
                                         {{ $r->created_at }}
