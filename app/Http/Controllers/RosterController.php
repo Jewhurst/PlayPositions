@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Roster;
 use Auth;
 use Sujip\Guid\Guid;
-
+use App\User;
 
 class RosterController extends Controller
 {
@@ -77,25 +77,11 @@ class RosterController extends Controller
      */
     public function show()
     {
-//        //$innings, $players
-//        $innings = 7;
-//        $players = 9;
-//        $data = array(
-//            'innings' => $innings,
-//            'players' => $players
-//        );
-//        return view('roster-create', compact('innings', 'players'));
-        $roster = new Roster;
-        $roster->user_id = 2;
-        $roster->title = 'Another title';
-        $roster->handle = base64_encode(urlencode(mt_rand(1000,10000000)));
-        $roster->names = 'steve, lara, tom, abe, bill';
-        $roster->teamname = 'muck dogs';
-        $roster->league = 'AA';
-        $roster->type = 'Baseball';
-        $roster->innings = 9;
-        $roster->players = 9;
-        $roster->save();
+        $created_by = auth()->user()->id;
+
+        $user = User::find($created_by);
+
+        return view('roster-show')->with('roster', $user->roster);
     }
 
     /**

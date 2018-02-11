@@ -29,9 +29,6 @@
                                     Title
                                 </th>
                                 <th>
-                                    Players
-                                </th>
-                                <th>
                                     Date Created
                                 </th>
                                 <th>
@@ -44,27 +41,10 @@
                                         {{$r->league}}
                                     </td>
                                     <td>
-                                        {{$r->teamname}}
+                                        {{$r->team_name}}
                                     </td>
                                     <td>
                                         {{$r->title}}
-                                    </td>
-                                    <td>
-                                    @php
-                                        $players = explode(',',$r->names);
-                                    @endphp
-                                    @foreach($players as $player)
-                                        @php
-                                            if($loop->first) {
-                                                $sep = ', ';
-                                            }
-                                            if($loop->last){
-                                                $sep = '';
-                                            }
-                                            echo $player.$sep;
-                                        @endphp
-                                    @endforeach
-
                                     </td>
                                     <td>
                                         {{ $r->created_at }}

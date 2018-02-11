@@ -76,6 +76,6 @@
 
     </div>
 
-    @include('modals.index_modals')
+
 @endsection
 

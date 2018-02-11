@@ -12381,6 +12381,10 @@ body {
   margin-right: auto;
 }
 
+.mousehand {
+  cursor: pointer;
+}
+
 .printonly {
   display: none;
 }

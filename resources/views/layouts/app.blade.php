@@ -69,6 +69,7 @@
 
 
         @yield('content')
+        @include('modals.index_modals')
         @include('footer')
     </div>
 
