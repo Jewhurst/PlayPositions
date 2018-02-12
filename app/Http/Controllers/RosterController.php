@@ -139,7 +139,7 @@ class RosterController extends Controller
         // 1. user that made it
         // 2. how many players/innings
         // 3. a handle to reference it
-        // 4. maybe store which positions and player names on initial
+        // 4. maybe store which positions and player names on initial 
         $count = count($players);
         $d = 0;
         for($b=1;$b<=$count;$b++){
