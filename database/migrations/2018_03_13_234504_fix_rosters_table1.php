@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateRostersTable extends Migration
+class FixRostersTable1 extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,7 @@ class UpdateRostersTable extends Migration
     public function up()
     {
         Schema::table('rosters', function (Blueprint $table) {
-            $table->dropColumn('table_html');
-            $table->dropColumn('names');
-            $table->renameColumn('teamname','team_name');
+            $table->dropColumn('type');
         });
     }
 

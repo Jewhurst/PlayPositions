@@ -19,7 +19,14 @@ class RosterController extends Controller
      */
     public function index()
     {
-        //
+        if(!Auth::user()){
+            return redirect()->route('index');
+        }
+        $user_id = auth()->user()->id;
+
+        $user = User::find($user_id);
+
+        return view('roster-show')->with('roster', $user->roster);
     }
 
     /**
@@ -34,6 +41,7 @@ class RosterController extends Controller
         $generator = new \Nubs\RandomNameGenerator\Alliteration();
         $data = $request->all();
         $user_id = isset($user->id) ? $user->id : 0;
+//        dd($user_id);
         $game_date = isset($data['game_date']) ? $data['game_date'] : '2018-01-01 12:00:00';
         $roster_id = guid();
         $team_name = isset($data['team_name']) ? $data['team_name'] : $generator->getName();
@@ -44,11 +52,11 @@ class RosterController extends Controller
         $players = isset($data['players']) ? $data['players'] : 9;
 
         $roster = new Roster;
-        $roster->user_id = $user_id;
+        $roster->created_by = $user_id;
         $roster->game_date = $game_date;
         $roster->roster_id = $roster_id;
         $roster->team_name = $team_name;
-        $roster->team_slug = $team_slug;
+        $roster->team_name_slug = $team_slug;
         $roster->league = $league;
         $roster->type = $type;
         $roster->innings = $innings;
@@ -78,11 +86,8 @@ class RosterController extends Controller
      */
     public function show()
     {
-        $user_id = auth()->user()->id;
 
-        $user = User::find($user_id);
 
-        return view('roster-show')->with('roster', $user->roster);
     }
 
     /**
@@ -139,7 +144,7 @@ class RosterController extends Controller
         // 1. user that made it
         // 2. how many players/innings
         // 3. a handle to reference it
-        // 4. maybe store which positions and player names on initial 
+        // 4. maybe store which positions and player names on initial
         $count = count($players);
         $d = 0;
         for($b=1;$b<=$count;$b++){

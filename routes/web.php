@@ -13,13 +13,13 @@
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('index');
 
 Auth::routes();
-
+//Route::any('/')
 Route::resource('roster','RosterController');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::any('/roster', 'RosterController@show');
+Route::any('/roster', 'RosterController@index')->name('roster');
 Route::post('/roster/create', ['as' => 'roster-create', 'uses' => 'RosterController@create']);
 Route::post('/roster/build', ['as' => 'roster-build', 'uses' => 'RosterController@build']);
 Route::post('/roster/lineup', ['as' => 'roster-lineup', 'uses' => 'RosterController@show']);

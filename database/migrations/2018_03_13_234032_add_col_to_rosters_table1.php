@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateRostersChangeTitleGamedate extends Migration
+class AddColToRostersTable1 extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,8 @@ class UpdateRostersChangeTitleGamedate extends Migration
     public function up()
     {
         Schema::table('rosters', function (Blueprint $table) {
-            $table->dropColumn('title');
-            $table->dateTime('game_date')->nullable()->after('roster_id');
-            $table->renameColumn('slug','team_slug')->nullable()->after('team_name');
+            $table->string('league')->nullable()->after('game_date');
+            $table->string('type')->nullable()->after('league');
         });
     }
 

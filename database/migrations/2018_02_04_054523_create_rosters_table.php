@@ -15,10 +15,17 @@ class CreateRostersTable extends Migration
     {
         Schema::create('rosters', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('handle', 255);
+
+            $table->string('roster_id', 255);
             $table->integer('created_by');
-            $table->text('table_html');
+            $table->string('team_name');
+            $table->string('team_name_slug');
+            $table->integer('innings')->nullable(false);
+            $table->integer('players')->nullable(false);
+            $table->dateTime('game_date')->nullable();
             $table->timestamps();
+
+
 //  `id` int(11) NOT NULL AUTO_INCREMENT,
 //  `slug` varchar(25) NOT NULL,
 //  `maker` text NOT NULL,

@@ -23,6 +23,15 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function home()
+    {
+        $created_by = auth()->user()->id;
+
+        $user = User::find($created_by);
+
+        return view('home')->with('roster', $user->roster);
+    }
+
     public function index()
     {
         $created_by = auth()->user()->id;
